@@ -1,4 +1,4 @@
-fetch('http://34.67.211.117/lol2.txt')
+fetch('https://www.reddit.com/.json')
   .then(response => response.text())
   .then((data) => {
     console.log(data)
