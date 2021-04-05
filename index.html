@@ -9,6 +9,6 @@
   axios
     .get("https://api.github.com/gists/6f8617347c9e89aae279691a52e5485e")
     .then((response) => {
-      console.log(response.data.files.xd.content);
+      console.log(response.data.files.filename.content);
     });
 </script>
