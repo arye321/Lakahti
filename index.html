@@ -44,6 +44,7 @@ if (took != "") {
 function lakahti() {
    var d = new Date();
    setCookie("took", Date.parse(d),100);
+   document.getElementById("took").innerHTML = d
 
 }
 function lastvisit() {
