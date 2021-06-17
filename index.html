@@ -1,15 +1,66 @@
-<div class="excontainer">
-    <button id="loadbasic">basic load</button>
-    <div id="result"></div>
- 
-</div>
-<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>repl.it</title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+  </head>
+<body>
+  <h2 id="lastVisit"></h2>
+  <h2 id="took"></h2>
+
+    <button id="hello" class="main" onclick="lakahti()">לקחתי</button>
+
+<button type="button" class="bot" onclick='document.cookie="took=;expires=Thu, 01 Jan 1970"'>Delete Cookie 1</button>&nbsp;
+<button type="button" class="bot" onclick='document.cookie="lastvisited=;expires=Thu, 01 Jan 1970"'>Delete lastvisit 2</button>
 
 <script>
-  fetch("time.txt")
-    .then((response) => response.text())
-    .then((response) => {
-      console.log(response);
-    })
-    .catch((err) => console.log("error " + err));
+
+var lastVisitVar=getCookie("lastvisited");
+if (lastVisitVar != "") {
+  date1 =  new Date(parseInt(lastVisitVar));  
+  document.getElementById("lastVisit").innerHTML = date1;
+}
+var took=getCookie("took");
+if (took != "") {
+  date2 =  new Date(parseInt(took));  
+  document.getElementById("took").innerHTML = date2;
+}
+function lakahti() {
+   var d = new Date();
+   setCookie("took", Date.parse(d),100);
+
+}
+function lastvisit() {
+   var d = new Date();
+   setCookie("lastvisited", Date.parse(d),100);
+}
+function getCookie(cname) {
+  var name = cname + "=";
+  var decodedCookie = decodeURIComponent(document.cookie);
+  var ca = decodedCookie.split(';');
+  for(var i = 0; i < ca.length; i++) {
+    var c = ca[i];
+    while (c.charAt(0) == ' ') {
+      c = c.substring(1);
+    }
+    if (c.indexOf(name) == 0) {
+      return c.substring(name.length, c.length);
+    }
+  }
+  return "";
+}
+function setCookie(cname,cvalue,exdays) {
+  var d = new Date();
+  d.setTime(d.getTime() + (exdays*24*60*60*1000));
+  var expires = "expires=" + d.toGMTString();
+  document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+}
+lastvisit();
 </script>
+
+<script src="script.js"></script>
+
+  </body>
+</html>
