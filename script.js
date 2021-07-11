@@ -39,7 +39,7 @@ if (took != "") {
   
 }
 function showTook(d){
-  document.getElementById("took").innerHTML = +getAmount() +"mg  | " + new Intl.DateTimeFormat('he-IL', { dateStyle: 'full', timeStyle: 'medium', }).format(d)  ;
+  document.getElementById("took").innerHTML =  new Intl.DateTimeFormat('he-IL', { dateStyle: 'full', timeStyle: 'medium', }).format(d) +" | "+getAmount() +"mg" ;
 }
 function lakahti() {
    var d = new Date();
