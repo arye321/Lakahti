@@ -79,12 +79,13 @@ function setCookie(cname,cvalue,exdays) {
   var expires = "expires=" + d.toGMTString();
   document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
 }
-var x = setInterval(function() {
-var took=getCookie("took");
 if (took != "") {
   date2 =  new Date(parseInt(took));  
   showTook(date2)
 }
+function timer(){
+   var took=getCookie("took");
+
   // Get today's date and time
   var now = new Date().getTime();
   var d = new Date();
@@ -104,7 +105,11 @@ if (took != "") {
   // If the count down is over, write some text 
   if (distance < 0) {
     clearInterval(x);
-    document.getElementById("countup").innerHTML = "EXPIRED";
+    document.getElementById("countup").innerHTML = "00:00:00";
   }
+}
+ timer()
+var x = setInterval(function() {
+ timer()
 }, 1000);
 lastvisit();
